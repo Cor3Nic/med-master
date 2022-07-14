@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import { dbConnectionPool } from './sql/database.js';
+import { con } from './sql/database.js';
 
 const app = express();
 const port = 3000;
@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('*', (request, response) => {
-	console.log(dbConnectionPool);
+	console.log(con);
 
-	dbConnectionPool.query('SELECT * FROM consumeable', function (error, results, fields) {
-		if (error) throw error;
-		console.log('The solution is: ', results[0].solution);
+	con.query("SELECT * FROM consumeable", function (err, result) {
+		if (err) throw err;
+		console.log("Result: " + result);
 	 });
 });
 

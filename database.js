@@ -1,13 +1,14 @@
-import { createPool } from 'promise-mysql';
+const mysql = require('mysql');
 
-const dbConnectionPool = async config => {
-	return createPool({
-		user: 'root',
-		password: 'schremserbier',
-		database: 'medmaster',
-		socketPath: '/cloudsql/vocal-messenger-356106:europe-west3:medmaster-dev',
-		...config
-	});
-};
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: ""
+});
 
-export { dbConnectionPool };
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+export { con };
