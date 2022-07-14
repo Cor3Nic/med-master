@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import { con } from './sql/database.js';
+import { con } from './database.js';
 
 const app = express();
 const port = 3000;
