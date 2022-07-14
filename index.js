@@ -12,9 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('*', (request, response) => {
-	console.log(con);
 
-	con.query("SELECT * FROM consumeable", function (err, result) {
+	con.query("SELECT * FROM consumable", function (err, result) {
 		if (err) throw err;
 		console.log("Result: " + result);
 	 });
